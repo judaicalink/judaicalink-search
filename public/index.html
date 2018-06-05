@@ -1,13 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    
+    <!-- Bootstrap CSS -->
+    <title>JudaicaLink Search Testpage</title>
+  </head>
+  <body>
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+	  <h1>Search Testpage</h1>
 
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
+	  This is a simple test page for development purposes.
 
+<form action="javascript:search()">
+<input type="text" id="query">
+<input type="submit" value="Search" />
+</form>
+<p></p>
+<div id="results">
+</div>
+
+
+    <script src="/js/jquery-1.12.3.min.js"></script>
+    <script src="/js/search.js"></script>
+
+
+  </body>
 </html>

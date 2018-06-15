@@ -41,6 +41,16 @@ processed.
 
 - [judaicalink-search:/routes/search.js](https://github.com/wisslab/judaicalink-search/blob/master/routes/search.js)
 
+### Installation
+
+- Clone this repo.
+- cd into the repo directory.
+- Install dependencies:
+    npm install
+- Run the backend:
+    npm start
+- Go to http://localhost:3000 to run a test search.
+
 ## ElasticSearch
 
 The ElasticSearch server that actually provides the data. The production

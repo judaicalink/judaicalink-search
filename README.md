@@ -46,9 +46,13 @@ processed.
 - Clone this repo.
 - cd into the repo directory.
 - Install dependencies:
+
     npm install
+
 - Run the backend:
+
     npm start
+
 - Go to http://localhost:3000 to run a test search.
 
 ## ElasticSearch

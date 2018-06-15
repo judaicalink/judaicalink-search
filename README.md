@@ -7,14 +7,14 @@ the client's Webbrowser, passes on the request to ElasticSearch and then
 returning the ElasticSearch results back to the browser, where it is displayed.
 
 
-+----------------------------+    +---------------------------+    +---------------+
-|                            |    |                           |    |               |
-| Repo: judaicalink-site     |    | Repo: judaicalink+search  |    |               |
-| File: static/js/search.js  +----> File: static/js/search.js +----> ElasticSearch |
-| Running in the Web browser |    | This backend.             |    |               |
-|                            |    |                           |    |               |
-|                            |    |                           |    |               |
-+----------------------------+    +---------------------------+    +---------------+
+    +----------------------------+    +---------------------------+    +---------------+
+    |                            |    |                           |    |               |
+    | Repo: judaicalink-site     |    | Repo: judaicalink+search  |    |               |
+    | File: static/js/search.js  +----> File: static/js/search.js +----> ElasticSearch |
+    | Running in the Web browser |    | This backend.             |    |               |
+    |                            |    |                           |    |               |
+    |                            |    |                           |    |               |
+    +----------------------------+    +---------------------------+    +---------------+
 
 ## Client (Browser) Code
 

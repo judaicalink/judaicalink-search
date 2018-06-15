@@ -1,0 +1,14 @@
+.hit {
+	margin-bottom: 10px;
+
+}
+
+.snippet, .score {
+	color:#333333;
+	font-size:80%;
+}
+
+ul.results {
+	list-style-type: none;
+	font-family:sans-serif;
+}

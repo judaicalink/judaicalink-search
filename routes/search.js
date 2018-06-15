@@ -26,6 +26,18 @@ router.get('/:page/:query', function(req, res, next) {
         query_string: {
           query: req.params.query
         }
+      },
+      highlight: {
+        fields: {
+          "name": {},
+					"Alternatives": {},
+          "birthDate": {},
+          "birthLocation": {},
+          "deathDate": {},
+          "deathLocation": {},
+          "Abstract": {},
+					"Publication": {}
+        }
       }
     }
   }).then(function(resp) {

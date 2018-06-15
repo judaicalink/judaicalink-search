@@ -12,6 +12,19 @@ search = function() {
   }
   console.log("Query: " + JSON.stringify(query))
 
+  var fieldMap = {
+    "name": "Name",
+    "Abstract": "Summary",
+    "deathDate": "Date of Death",
+    "birthDate": "Date of Birth",
+    "deathLocation": "Location of Death",
+    "birthLocation": "Location of Birth",
+    "Alternatives": "Alternative Labels",
+    "Publication": "Publications"
+  }
+
+  var fieldOrder = ["name", "Alternatives", "birthDate", "deathDate", "birthLocation", "deathLocation", "Abstract", "Publication"]
+
   var updateResults = function(query, pageNumber, cb) {
 
     $.getJSON(backend + "/search/" + pageNumber + "/" + query, function(data) {
@@ -21,14 +34,28 @@ search = function() {
       var h = $("#results")
       h.html("<p>Total Hits: " + total + "</p>")
       h.append("<p>First " + hits + " hits:</p>")
-      var reslist = $("<ol></ol>").appendTo(h)
+      var reslist = $('<ul class="results"></ul>').appendTo(h)
       for (i = 0; i < hits; i++) {
         var result = data.response.hits.hits[i]
-        reslist.append("<li><a href='" + result["_id"] + "'>" + result["_source"].name + "</a> (Score: " + result["_score"] + ")</li>")
+        var snippet = '<span class="snippet">'
+        for (hl of fieldOrder) {
+          if (hl in result["highlight"]) {
+
+            if (snippet !== '<span class="snippet">') {
+              snippet = snippet + " / "
+            }
+            snippet = snippet + "<b>" + fieldMap[hl] + ":</b> "
+            for (o of result["highlight"][hl]) {
+              snippet = snippet + o + "... "
+            }
+          }
+        }
+        snippet = snippet + "</span"
+        reslist.append("<li class='hit'><a href='" + result["_id"] + "'>" + result["_source"].name + "</a> <br />" + snippet + "<span class='score'>(Score: " + result["_score"].toFixed(2) + ")</span></li>")
       }
       if (typeof cb === 'function') {
-				cb(total)
-			}
+        cb(total)
+      }
     })
   }
 

@@ -43,8 +43,8 @@ processed.
 
 ### Installation
 
-- Clone this repo.
-- cd into the repo directory.
+- Clone this repo: `git clone git@github.com:wisslab/judaicalink-search.git`
+- cd into the repo directory: `cd judaicalink-search`
 - Install dependencies: `npm install`
 - Run the backend: `npm start`
 - Go to http://localhost:3000 to run a test search.

@@ -15,20 +15,19 @@ router.get('/:query', function(req, res, next) {
 
   client.search({
     index: 'judaicalink',
-    type: 'doc',
+    type: '_doc',
     body: {
       query: {
-        match: {
-          _all: req.params.query
+        query_string: {
+					query: req.params.query
         }
       }
     }
   }).then(function(resp) {
-    var hits = resp.hits.hits;
     res.set("Access-Control-Allow-Origin", "*")
     res.json({
       "query": req.params.query,
-      "response": parsedData
+      "response": resp 
     });
   }, function(err) {
     console.trace(err.message);

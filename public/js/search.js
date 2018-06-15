@@ -1,20 +1,26 @@
 search = function() {
-	query = $("#query").val()
+	var BACKEND_DEV = "http://localhost:3000"
+	var BACKEND_PROD = "http://search.judaicalink.org"
+
+	/* CHANGE THIS TO BACKEND_PROD BEFORE DEPLOYING! */
+	var backend = BACKEND_DEV
+
+	var query = $("#query").val()
 	if (query.trim().length==0) {
 		console.log("Empty query")
 		return
 	}
 	console.log("Query: " + JSON.stringify(query))
-	$.getJSON("http://search.judaicalink.org/search/" + query, function(data) {
+	$.getJSON(backend + "/search/" + query, function(data) {
 		// console.log(data)		
-		total = data.response.hits.total
-		hits = data.response.hits.hits.length
-		h = $("#results")
+		var total = data.response.hits.total
+		var hits = data.response.hits.hits.length
+		var h = $("#results")
 		h.html("<p>Total Hits: " + total + "</p>")
 		h.append("<p>First " + hits + " hits:</p>")
-		reslist = $("<ol></ol>").appendTo(h)
+		var reslist = $("<ol></ol>").appendTo(h)
 		for (i=0;i<hits;i++) {
-			result = data.response.hits.hits[i]
+			var result = data.response.hits.hits[i]
 			reslist.append("<li><a href='" + result["_id"] + "'>"+result["_source"].name+"</a> (Score: " + result["_score"] + ")</li>")
 		}
 	})

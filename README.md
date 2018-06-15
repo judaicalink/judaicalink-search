@@ -4,12 +4,12 @@ JudaicaLink Search
 This is the backend of the JudaicaLink search functionality. It is developed in
 node.js and basically takes requests from the JavaScript search.js running on
 the client's Webbrowser, passes on the request to ElasticSearch and then
-returning the ElasticSearch results back to the browser, where it is displayed.
+returning the ElasticSearch result back to the browser, where it is displayed.
 
 
     +----------------------------+    +---------------------------+    +---------------+
     |                            |    |                           |    |               |
-    | Repo: judaicalink-site     |    | Repo: judaicalink+search  |    |               |
+    | Repo: judaicalink-site     |    | Repo: judaicalink-search  |    |               |
     | File: static/js/search.js  +----> File: static/js/search.js +----> ElasticSearch |
     | Running in the Web browser |    | This backend.             |    |               |
     |                            |    |                           |    |               |

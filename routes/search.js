@@ -11,15 +11,20 @@ var client = new elasticsearch.Client({
 
 
 /* GET users listing. */
-router.get('/:query', function(req, res, next) {
-
+router.get('/:page/:query', function(req, res, next) {
+  var page = parseInt(req.params.page)
+  if (page <= 0) {
+    page = 1
+  }
   client.search({
     index: 'judaicalink',
     type: '_doc',
+    from: (page - 1) * 10,
+    size: 10,
     body: {
       query: {
         query_string: {
-					query: req.params.query
+          query: req.params.query
         }
       }
     }
@@ -27,7 +32,7 @@ router.get('/:query', function(req, res, next) {
     res.set("Access-Control-Allow-Origin", "*")
     res.json({
       "query": req.params.query,
-      "response": resp 
+      "response": resp
     });
   }, function(err) {
     console.trace(err.message);

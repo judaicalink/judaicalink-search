@@ -23,20 +23,23 @@ router.get('/:page/:query', function(req, res, next) {
     size: 10,
     body: {
       query: {
-        query_string: {
-          query: req.params.query
+        multi_match: {
+
+          query: req.params.query,
+          fields: ["name^4", "Alternatives^3", "birthDate", "birthLocation^2", "deathDate", "deathLocation^2", "Abstract", "Publication"]
         }
+
       },
       highlight: {
         fields: {
           "name": {},
-					"Alternatives": {},
+          "Alternatives": {},
           "birthDate": {},
           "birthLocation": {},
           "deathDate": {},
           "deathLocation": {},
           "Abstract": {},
-					"Publication": {}
+          "Publication": {}
         }
       }
     }

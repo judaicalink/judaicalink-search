@@ -33,7 +33,6 @@ search = function() {
       var hits = data.response.hits.hits.length
       var h = $("#results")
       h.html("<p>Total Hits: " + total + "</p>")
-      h.append("<p>First " + hits + " hits:</p>")
       var reslist = $('<ul class="results"></ul>').appendTo(h)
       for (i = 0; i < hits; i++) {
         var result = data.response.hits.hits[i]

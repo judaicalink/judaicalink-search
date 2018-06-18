@@ -46,4 +46,12 @@ processed.
 The ElasticSearch server that actually provides the data. The production
 version is running on our Web server, but not directly accessible from outside.
 
+The data to be loaded to ElasticSearch should be a json file with a specific format in which each object is distinguished with an id-index. 
+Therefore, to load the JudaicaLink datasets to ElasticSearch they were first transformed into the required format. To do so the [Python scripts] (https://github.com/wisslab/judaicalink-search/blob/master/tools/scripts)
+in the tools directory were used to generated the [json files] (https://github.com/wisslab/judaicalink-search/blob/master/tools/output). 
+
+Then the generated json files were loaded as _bulk data to ElasticSearch as follow: 
+
+curl -H "Content-Type:application/json" -XPOST "localhost:9200/judaicalink/doc/_bulk?pretty" --data-binary @filename.json 
+
 You can setup a local version following these instructions: (TODO!)

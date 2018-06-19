@@ -4,12 +4,12 @@ JudaicaLink Search
 This is the backend of the JudaicaLink search functionality. It is developed in
 node.js and basically takes requests from the JavaScript search.js running on
 the client's Webbrowser, passes on the request to ElasticSearch and then
-returning the ElasticSearch results back to the browser, where it is displayed.
+returning the ElasticSearch result back to the browser, where it is displayed.
 
 
     +----------------------------+    +---------------------------+    +---------------+
     |                            |    |                           |    |               |
-    | Repo: judaicalink-site     |    | Repo: judaicalink+search  |    |               |
+    | Repo: judaicalink-site     |    | Repo: judaicalink-search  |    |               |
     | File: static/js/search.js  +----> File: static/js/search.js +----> ElasticSearch |
     | Running in the Web browser |    | This backend.             |    |               |
     |                            |    |                           |    |               |
@@ -40,6 +40,14 @@ The main action happens in this file, where requests to /search/:query are
 processed.
 
 - [judaicalink-search:/routes/search.js](https://github.com/wisslab/judaicalink-search/blob/master/routes/search.js)
+
+### Installation
+
+- Clone this repo: `git clone git@github.com:wisslab/judaicalink-search.git`
+- cd into the repo directory: `cd judaicalink-search`
+- Install dependencies: `npm install`
+- Run the backend: `npm start`
+- Go to http://localhost:3000 to run a test search.
 
 ## ElasticSearch
 
